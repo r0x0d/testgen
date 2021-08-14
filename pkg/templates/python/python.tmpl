@@ -1,0 +1,18 @@
+from {{.SourceRoot}}.{{.Module}} import {{.FunctionName}}
+
+{{range $import := .Spec.CustomImports}}
+{{$import}}
+{{end}}
+
+def test_{{.FunctionName}}():
+    # Execution
+    result = {{.FunctionName}}(
+        {{range $value := .Spec.Input}}
+        {{$value}},
+        {{end}}
+    )
+
+    # Assertation
+    {{range $value := .Spec.Asserts}}
+    assert {{$value}}
+    {{end}}

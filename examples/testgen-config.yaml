@@ -1,0 +1,17 @@
+language: "python:3.7"
+
+# Global settings
+source_root: "python_codegen"
+
+cases:
+  # Test cases
+  print_message:
+    module: "core" # cases.hello.module > cases.module
+    # Can be omitted
+    function_name: "print_message"
+    spec:
+      # str, 0, 0.1, true, "c
+      input:
+        - "'Hello World'"
+      asserts: # null
+        - "result is None"

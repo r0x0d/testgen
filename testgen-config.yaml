@@ -1,0 +1,57 @@
+language: "python:3.7"
+
+# Global settings
+source_root: "testgen"
+
+# Global custom imports
+custom_imports:
+  - "from typing import Text"
+
+cases:
+  # Test cases
+  hello:
+    module: "core" # cases.hello.module > cases.module
+    # Can be omitted
+    function_name: "hello"
+    spec:
+      # str, 0, 0.1, true, "c
+      input:
+        - "hello angeli2"
+        - "hello angeli"
+      asserts: # null
+        - "result is not null"
+        - "result is 'hello angeli'"
+
+      # - cases.hello.custom_imports > cases.custom_imports -
+      # set(cases.hello.custom_imports & cases.custom_imports)
+      custom_imports:
+        - "from typing import List"
+
+  hello2:
+    module: "core" # cases.hello.module > cases.module
+    function_name: "hello2"
+    spec:
+      # str, 0, 0.1, true, "c
+      input:
+        - "hello angeli2"
+        - "hello angeli"
+      asserts: # null
+        - "result is not null"
+        - "result is 'hello angeli'"
+
+      # - cases.hello.custom_imports > cases.custom_imports -
+      # set(cases.hello.custom_imports & cases.custom_imports)
+      custom_imports:
+        - "from typing import List"
+
+  pkg_hello:
+    module: "cmd.pkg"
+    function_name: "hello3"
+    spec:
+      # str, 0, 0.1, true, "c
+      input:
+        - "'hello angeli2'"
+        - "'hello angeli'"
+      asserts: # null
+        - "result is not null"
+        - "result is 'hello angeli'"
