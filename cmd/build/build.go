@@ -3,21 +3,17 @@ package build
 import (
 	"flag"
 	"fmt"
+
+	"github.com/r0x0d/testgen/internal/config"
 	"github.com/r0x0d/testgen/internal/global"
 	"github.com/r0x0d/testgen/pkg/definitions"
 )
 
-func Run(flags []flag.Flag) error {
-
-	global.Config.Flags = flags
-	global.Config.Viper.SetConfigName("testgen-config")
-	global.Config.Viper.SetConfigType("yaml")
-	global.Config.Viper.AddConfigPath(".")
-	err := global.Config.Viper.ReadInConfig()
+func Prepare(flags []flag.Flag) error {
+	err := config.Read(flags)
 	if err != nil {
 		return err
 	}
-
 	return nil
 }
 

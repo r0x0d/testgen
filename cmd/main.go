@@ -2,10 +2,11 @@ package main
 
 import (
 	"flag"
-	"github.com/r0x0d/testgen/cmd/build"
-	"github.com/r0x0d/testgen/pkg/templates/python"
 	"log"
 	"os"
+
+	"github.com/r0x0d/testgen/cmd/build"
+	"github.com/r0x0d/testgen/pkg/templates"
 )
 
 var flags = []flag.Flag{
@@ -18,17 +19,16 @@ var flags = []flag.Flag{
 
 func main() {
 	log.Println(os.Args[1])
-	err := build.Run(flags)
+	err := build.Prepare(flags)
 	if err != nil {
-		log.Printf("error: %v\n", err)
+		log.Printf("error: %v", err)
 		return
 	}
 
 	cases := build.Build()
-	err = python.BuildTemplate(cases)
+	err = templates.BuildTemplate(cases)
 	if err != nil {
-		log.Printf("error: %v\n", err)
+		log.Printf("error: %v", err)
 		return
 	}
-	// ...
 }

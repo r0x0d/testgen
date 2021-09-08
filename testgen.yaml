@@ -1,4 +1,4 @@
-language: "python:3.7"
+language: "python"
 
 # Global settings
 source_root: "testgen"
@@ -16,8 +16,8 @@ cases:
     spec:
       # str, 0, 0.1, true, "c
       input:
-        - "hello angeli2"
-        - "hello angeli"
+        - "'hello angeli2'"
+        - "'hello angeli'"
       asserts: # null
         - "result is not null"
         - "result is 'hello angeli'"
@@ -33,8 +33,8 @@ cases:
     spec:
       # str, 0, 0.1, true, "c
       input:
-        - "hello angeli2"
-        - "hello angeli"
+        - "'hello angeli2'"
+        - "'hello angeli'"
       asserts: # null
         - "result is not null"
         - "result is 'hello angeli'"
